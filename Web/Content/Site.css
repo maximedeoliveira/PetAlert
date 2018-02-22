@@ -1,0 +1,253 @@
+﻿*, *:after, *:before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: Roboto;
+}
+
+.body-content {
+    margin-top: 50px;
+}
+
+.row hr{
+    margin-left: 15px;
+    margin-right: 15px;
+    border: 1px solid black;
+}
+
+.fa{
+    margin-right: 5px;
+}
+div.title{
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+}
+div.title h2{
+    margin: 0;
+}
+div.retour{
+    margin-bottom: 20px;
+}
+table .btn{
+    margin-left: 5px;
+}
+
+/**
+ * Navbar
+ */
+.navbar-inverse{
+    background-color: #333;
+}
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand{
+    color: #FFF;
+}
+/**
+ * Google maps
+ */
+div#google-map{
+    margin-top: 30px;
+    height: 350px;
+    width: 100%;
+}
+
+/**
+ * Formulaire de recherche
+ */
+.search{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+}
+.search .row:first-child{
+    margin-left: 10px;
+}
+.search .row:last-child{
+    margin-left: 10px;
+}
+
+/**
+ * Buttons Styles
+ */
+.btn{
+    border-radius: 2px;
+}
+.btn.btn-primary{
+    background-color: #3F51B5;
+    border-color: transparent;
+}
+
+/**
+ * Card Styles
+ */
+
+.card {
+	background-color: #fff;
+	margin-bottom: 1.6rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    min-height: 400px;
+}
+
+.card__padding {
+	padding: 1.6rem;
+}
+ 
+.card__image {
+	min-height: 100px;
+	background-color: #eee;
+}
+.card__image img {
+	width: 100%;
+	max-width: 100%;
+	display: block;
+}
+
+.card__content {
+	position: relative;
+}
+
+/* card meta */
+.card__meta time {
+	font-size: 1.5rem;
+	color: #bbb;
+}
+
+/* card article */
+.card__article a {
+	text-decoration: none;
+	color: #444;
+	transition: all 0.5s ease;
+}
+.card__article a:hover {
+	color: #2980b9;
+}
+.card__article h3{
+    font-size: 18px;
+}
+.card__article p{
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 20px;
+}
+
+/* card action */
+.card__action {
+	overflow: hidden;
+	padding-right: 1.6rem;
+	padding-left: 1.6rem;
+	padding-bottom: 1.6rem;
+}
+	 
+.card__author {}
+
+.card__author img,
+.card__author-content {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.card__author img{
+	border-radius: 50%;
+	margin-right: 0.6em;
+}
+
+.card__share {
+	float: right;
+	position: relative;
+	margin-top: -42px;
+    text-decoration: none;
+}
+.card__share a{
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.card__social {
+	position: absolute;
+	top: 0;
+	right: 0;
+	visibility: hidden;
+	width: 160px;
+	transform: translateZ(0);
+  	transform: translateX(0px);
+  	transition: transform 0.35s ease;
+}
+.card__social--active {
+	visibility: visible;
+	/*z-index: 3;*/
+	transform: translateZ(0);
+ 	transform: translateX(-48px);
+  	transition: transform 0.35s ease;
+}
+
+.share-toggle {
+	z-index: 2;
+}
+.share-toggle:before {
+	/*content: "\f1e0";*/
+    content: "\f067";
+	font-family: 'FontAwesome';
+	color: #3F51B5;
+}
+.share-toggle.share-expanded:before {
+	content: "\f00d";
+}
+
+.share-icon {
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	line-height: 48px;
+	text-align: center;
+	border-radius: 50%;
+	background-color: #fff;
+	transition: all 0.3s ease;
+	outline: 0;
+
+	box-shadow: 
+	  	0 2px 4px rgba(0,0,0, 0.12),
+	    0 2px 4px rgba(0,0,0, 0.24);
+}
+.share-icon:hover,
+.share-icon:focus {
+	box-shadow: 
+	  	0 3px 6px rgba(0,0,0, 0.12),
+	    0 3px 6px rgba(0,0,0, 0.24);
+
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+/**
+ * Details
+ */
+.details .title{
+    padding-bottom: 5px;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+}
+.details .title h2{
+    margin-top : 0;
+    margin-bottom: 0;
+}
+.details .date_ajout{
+    color: grey;
+}
+.details .retour{
+    margin-bottom: 20px;
+}
+.details img{
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}

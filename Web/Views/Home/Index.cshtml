@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Web.Model.Recherche>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row result">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="card radius shadowDepth1">
+                <div class="card__image border-tlr-radius">
+                    @if (item.Images.Count == 0)
+                    {
+                        <img src="https://cdn.shopify.com/s/files/1/0889/1092/products/1T9A3294.jpg?v=1435149577" alt="image" class="border-tlr-radius">
+                    }
+                    else
+                    {
+                        <img src="../@item.Images[0].Url" alt="image" class="border-tlr-radius">
+                    }
+
+                </div>
+                <div class="card__content card__padding">
+                    <div class="card__share">
+                        <a id="share" class="share-toggle share-icon" href="Recherches/Details/@item.Id"></a>
+                    </div>
+                    <div class="card__meta">
+                        <time>@Html.DisplayFor(modelItem => item.Date_ajout)</time>
+                    </div>
+
+                    <article class="card__article">
+                        <h3>@Html.DisplayFor(modelItem => item.Nom)</h3>
+                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    }
+</div>

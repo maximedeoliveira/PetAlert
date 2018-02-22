@@ -1,0 +1,49 @@
+﻿@model Web.Model.Recherche
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="details">
+    <div class="row title">
+        <h2>@Html.DisplayFor(model => model.Nom)</h2>
+        <p></p>
+    </div>
+    <div class="row retour">
+        @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.User.Id))
+        {
+            <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary pull-right" style="margin-left: 15px"><i class="fa fa-pencil"></i>Editer</a>
+        }
+        <a href="@Url.Action("Index")" class="btn btn-primary pull-right"><i class="fa fa-caret-left"></i>Retourner à la liste</a>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            @if (Model.Images.Count == 0)
+            {
+                <img src="https://cdn.shopify.com/s/files/1/0889/1092/products/1T9A3294.jpg?v=1435149577" alt="image" class="border-tlr-radius">
+            }
+            else
+            {
+                <img src="../../@Model.Images[0].Url" alt="image" class="border-tlr-radius">
+            }
+        </div>
+        <div class="col-sm-8">
+            <p><strong>@Html.DisplayNameFor(model => model.Description) :</strong> @Html.DisplayFor(model => model.Description)</p>
+            <p><strong>@Html.DisplayNameFor(model => model.Sexe) :</strong> @Html.DisplayFor(model => model.Sexe)</p>
+            <p><strong>@Html.DisplayNameFor(model => model.Race) :</strong> @Html.DisplayFor(model => model.Race)</p>
+            <p><strong>@Html.DisplayNameFor(model => model.Adresse) :</strong> <span id="address">@Html.DisplayFor(model => model.Adresse)</span></p>
+            <p><strong>Date de la disparition :</strong> @Model.Date_recherche.ToString("dd/MM/yyyy")</p>
+        </div>
+    </div>
+    <div class="row">
+        <div id="google-map"></div>
+    </div>
+</div>
+
+@section scripts {
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2jdcLopDIPzfN0R2VFlfqQBh2VNP--ig&callback=init_maps"></script>
+}
+
+
+

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Web.Model.TypeAnimaux>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row title">
+    <h2 class="pull-left">Types d'animaux</h2>
+    <a href="@Url.Action("Create")" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>Ajouter</a>
+</div>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i>Modifier</a>
+                        <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-primary pull-right"><i class="fa fa-remove"></i>Supprimer</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        
+    </table>
+</div>
+

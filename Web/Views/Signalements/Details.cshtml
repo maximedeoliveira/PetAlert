@@ -1,0 +1,25 @@
+﻿@model Web.Model.Signalement
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="details">
+    <div class="row retour">
+        @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.User.Id))
+        {
+            <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary pull-right" style="margin-left: 15px"><i class="fa fa-pencil"></i>Editer</a>
+        }
+        <a href="@Url.Action("Index")" class="btn btn-primary pull-right"><i class="fa fa-caret-left"></i>Retourner à la liste</a>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div id="google-map"></div>
+        </div>
+        <div class="col-sm-8">
+            <p><strong>@Html.DisplayNameFor(model => model.Description) :</strong> @Html.DisplayFor(model => model.Description)</p>
+            <p><strong>@Html.DisplayNameFor(model => model.Adresse) :</strong> <span id="address">@Html.DisplayFor(model => model.Adresse)</span></p>
+        </div>
+    </div>
+</div>

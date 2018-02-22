@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Web.Model.Recherche>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row search">
+    <div class="col-sm-4">
+        <form>
+            <div class="form-group">
+                <label>Recherche par adresse: </label>
+                <div class="input-group">
+                    <input type="text" name="serach-google-map" id="inputSearchGoogleMap"
+                           placeholder="Fitrer par adresse" class="form-control" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="btSeachGoogleMap">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <input type="button" value="Supprimer les marqueurs" id="resetMarker" class="btn btn-default" style="margin-top: 10px;"/>
+            </div>
+            <div class="form-group">
+                <label>Recherche par type d'animaux : </label>
+                @Html.DropDownList("typeAnimaux", new SelectList(ViewBag.ListTypeAnimaux, "Id", "Nom"), 
+               "Choisir une catégorie ...", new { @class = "form-control" })
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-8">
+        <div class="row">
+            <div id="recherche-google-map" style="height: 300px;"></div>
+        </div>
+    </div>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row retour">
+        <a href="@Url.Action("Create")" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>Ajouter</a>
+    </div>
+} 
+
+<div class="row result">
+    @foreach (var item in Model){
+        <div class="col-sm-3" data-id="@item.Type.Id" data-address="@item.Adresse">
+            <div class="card radius shadowDepth1">
+                <div class="card__image border-tlr-radius">
+                    @if (item.Images.Count == 0)
+                    {
+                        <span style=""></span>
+                        <img src="https://cdn.shopify.com/s/files/1/0889/1092/products/1T9A3294.jpg?v=1435149577" alt="image" class="border-tlr-radius">
+                    }
+                    else
+                    {
+                        <span style="background: url('../@item.Images[0].Url') top center; background-size: cover; display: block; height: 250px; width: 100%"></span>
+                        @*<img src="../@item.Images[0].Url" alt="image" class="border-tlr-radius">*@
+                    }
+                    
+                </div>
+                <div class="card__content card__padding">
+                    <div class="card__share">
+                        <a id="share" class="share-toggle share-icon" href="@Url.Action("Details", new { id = item.Id })"></a>
+                    </div>
+                    <div class="card__meta">
+                        <time>@item.Date_ajout.ToString("dd/MM/yyyy")</time>
+                    </div>
+
+                    <article class="card__article">
+                        <h3>@Html.DisplayFor(modelItem => item.Nom)</h3>
+                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts {
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2jdcLopDIPzfN0R2VFlfqQBh2VNP--ig&callback=init_maps_recherche"></script>
+}

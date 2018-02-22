@@ -1,0 +1,18 @@
+﻿@model Web.Model.TypeAnimaux
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<div class="row text-center">
+    <p>Etes-vous sur de vouloir supprimer "@Html.DisplayFor(model => model.Nom)" des types d'animaux ?</p>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <input type="submit" value="Valider" class="btn btn-primary" />
+            <a href="@Url.Action("Index")" class="btn btn-primary">Annuler</a>
+        </div>
+    }
+</div>
